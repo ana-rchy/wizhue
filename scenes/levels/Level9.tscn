@@ -1,0 +1,337 @@
+[gd_scene load_steps=36 format=3 uid="uid://nu5f6wc777j6"]
+
+[ext_resource type="TileSet" uid="uid://dirw158crbibu" path="res://resources/tilesets/StaticCollision.tres" id="1_nu2bw"]
+[ext_resource type="TileSet" uid="uid://c46ujpt0xw5h5" path="res://resources/tilesets/Decoration.tres" id="2_hkenr"]
+[ext_resource type="TileSet" uid="uid://qn60qcru4v2" path="res://resources/tilesets/Level.tres" id="3_fdva2"]
+[ext_resource type="Script" path="res://scripts/ingame/level/LevelShift.cs" id="4_qxv1q"]
+[ext_resource type="AudioStream" uid="uid://biiw5voox6w02" path="res://audio/shift_new.wav" id="5_1qky5"]
+[ext_resource type="Script" path="res://scripts/ingame/player/Player.cs" id="5_b77l5"]
+[ext_resource type="PackedScene" uid="uid://dmjjsmpuqopg4" path="res://scenes/prefabs/ingame/PlayerColor.tscn" id="6_e4f5m"]
+[ext_resource type="AudioStream" uid="uid://bhnhkqgh3qd5u" path="res://audio/change_color.wav" id="6_jok76"]
+[ext_resource type="Script" path="res://scripts/ingame/finish/Finish.cs" id="7_fupj4"]
+[ext_resource type="PackedScene" uid="uid://bl4p7ivsntfe" path="res://scenes/prefabs/ingame/FinishColor.tscn" id="8_xhtag"]
+[ext_resource type="TileSet" uid="uid://0vfqa15q06fa" path="res://resources/tilesets/LevelVisual.tres" id="9_qhi6b"]
+[ext_resource type="AudioStream" uid="uid://x17en3sf4m0j" path="res://audio/move_new.wav" id="9_vw0dj"]
+[ext_resource type="Script" path="res://scripts/ingame/level/LevelVisual.cs" id="10_v4fvr"]
+[ext_resource type="Texture2D" uid="uid://6hdwv346ieqp" path="res://sprites/ingame/flag.png" id="11_80p5m"]
+[ext_resource type="Script" path="res://scripts/ingame/finish/FinishVisual.cs" id="12_7opm6"]
+[ext_resource type="PackedScene" uid="uid://b77u76sepqlie" path="res://scenes/prefabs/ingame/PlayerVisual.tscn" id="13_1vny7"]
+[ext_resource type="Shader" path="res://scripts/shaders/Blend.gdshader" id="14_sow85"]
+[ext_resource type="PackedScene" uid="uid://dj1s75tl0kerq" path="res://scenes/prefabs/ingame/CurrentColor.tscn" id="15_aigxf"]
+[ext_resource type="Script" path="res://scripts/shaders/Blend.cs" id="15_bujtr"]
+[ext_resource type="Script" path="res://scripts/ingame/ui/Blocker.cs" id="15_x03c6"]
+[ext_resource type="Shader" path="res://scripts/shaders/CRT.gdshader" id="16_bc5ph"]
+[ext_resource type="Material" uid="uid://7eqsakxy1pwg" path="res://resources/BloomMaterial.tres" id="17_h7b5b"]
+[ext_resource type="Script" path="res://scripts/ingame/ui/Pause.cs" id="19_5v4xu"]
+[ext_resource type="FontFile" uid="uid://dxeu3wrfd8n4s" path="res://sprites/ui/ingame/numbers.png" id="19_33qfx"]
+[ext_resource type="Texture2D" uid="uid://eh11li2n86ms" path="res://sprites/ui/ingame/resume.png" id="20_itbyk"]
+[ext_resource type="Script" path="res://scripts/ingame/ui/PauseButton.cs" id="21_6hrvy"]
+[ext_resource type="Texture2D" uid="uid://cvbr44m83rhf8" path="res://sprites/ui/ingame/menu.png" id="22_ouute"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6dymp"]
+font = ExtResource("19_33qfx")
+font_size = 40
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bl5vr"]
+shader = ExtResource("14_sow85")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8k5lo"]
+shader = ExtResource("16_bc5ph")
+shader_parameter/crt_curve = 0.005
+shader_parameter/crt_scan_line_color = 0.347
+shader_parameter/aperture_grille_rate = 0.4
+shader_parameter/rf_switch_esque_blur = 0.01
+shader_parameter/white_noise_rate = 0.005
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_akv17"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3nfky"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fufq5"]
+shader = ExtResource("16_bc5ph")
+shader_parameter/crt_curve = 0.005
+shader_parameter/crt_scan_line_color = 0.347
+shader_parameter/aperture_grille_rate = 0.4
+shader_parameter/rf_switch_esque_blur = 0.01
+shader_parameter/white_noise_rate = 0.005
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ilf0v"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ayhg6"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(480, 270)
+zoom = Vector2(2, 2)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 960.0
+offset_bottom = 540.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Border" type="ColorRect" parent="Control"]
+z_index = -2
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -112.0
+offset_right = 160.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0823529, 0.0823529, 0.0823529, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticCollision" type="TileMap" parent="."]
+position = Vector2(320, 158)
+tile_set = ExtResource("1_nu2bw")
+format = 2
+layer_0/tile_data = PackedInt32Array(-1, 65536, 0, -65536, 65536, 0, -65535, 65536, 0, -65534, 65536, 0, -65532, 65536, 0, -65531, 65536, 0, -65530, 65536, 0, -65529, 65536, 0, -65528, 65536, 0, -65527, 65536, 0, -65526, 65536, 0, 10, 65536, 0, 65546, 65536, 0, 131082, 65536, 0, 196618, 65536, 0, 262154, 65536, 0, 327690, 65536, 0, 393226, 65536, 0, 458762, 65536, 0, 458761, 65536, 0, 458760, 65536, 0, 458759, 65536, 0, 458758, 65536, 0, 458757, 65536, 0, 458756, 65536, 0, 458755, 65536, 0, 458754, 65536, 0, 458753, 65536, 0, 458752, 65536, 0, 524287, 65536, 0, 458751, 65536, 0, 393215, 65536, 0, 327679, 65536, 0, 262143, 65536, 0, 196607, 65536, 0, 131071, 65536, 0, 65535, 65536, 0, -65533, 65536, 0)
+
+[node name="Decoration" type="TileMap" parent="."]
+position = Vector2(320, 158)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("2_hkenr")
+format = 2
+layer_0/tile_data = PackedInt32Array(65538, 131072, 2, 65540, 196608, 2)
+
+[node name="Level" type="TileMap" parent="."]
+visible = false
+position = Vector2(320, 158)
+tile_set = ExtResource("3_fdva2")
+format = 2
+layer_0/name = "Red"
+layer_0/modulate = Color(1, 0, 0, 1)
+layer_0/navigation_enabled = false
+layer_0/tile_data = PackedInt32Array(393216, 0, 0, 393224, 0, 0)
+layer_1/name = "Green"
+layer_1/modulate = Color(0, 1, 0, 1)
+layer_1/navigation_enabled = false
+layer_1/tile_data = PackedInt32Array(393220, 1, 0, 327684, 1, 0, 262148, 1, 0, 262147, 1, 0, 262146, 1, 0, 262145, 1, 0, 262144, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 65543, 1, 0, 65544, 1, 0, 4, 1, 0)
+layer_2/name = "Blue"
+layer_2/modulate = Color(0, 0, 1, 1)
+layer_2/navigation_enabled = false
+layer_2/tile_data = PackedInt32Array()
+script = ExtResource("4_qxv1q")
+
+[node name="ShiftSFX" type="AudioStreamPlayer" parent="Level"]
+stream = ExtResource("5_1qky5")
+max_polyphony = 10
+
+[node name="ColorChangeSFX" type="AudioStreamPlayer" parent="Level"]
+stream = ExtResource("6_jok76")
+max_polyphony = 5
+
+[node name="Player" type="Node2D" parent="."]
+visible = false
+position = Vector2(352, 350)
+script = ExtResource("5_b77l5")
+
+[node name="Green" parent="Player" instance=ExtResource("6_e4f5m")]
+collision_layer = 5
+collision_mask = 69
+
+[node name="MoveSFX" type="AudioStreamPlayer" parent="Player/Green"]
+stream = ExtResource("9_vw0dj")
+max_polyphony = 10
+
+[node name="Finish" type="Node2D" parent="."]
+visible = false
+position = Vector2(512, 350)
+script = ExtResource("7_fupj4")
+_nextLevel = 10
+
+[node name="Green" parent="Finish" instance=ExtResource("8_xhtag")]
+collision_layer = 64
+collision_mask = 4
+
+[node name="Visuals" type="Node" parent="."]
+
+[node name="Red" type="SubViewport" parent="Visuals"]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(960, 540)
+
+[node name="LevelVisual" type="TileMap" parent="Visuals/Red"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(320, 158)
+tile_set = ExtResource("9_qhi6b")
+format = 2
+script = ExtResource("10_v4fvr")
+
+[node name="Green" type="SubViewport" parent="Visuals"]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(960, 540)
+
+[node name="LevelVisual" type="TileMap" parent="Visuals/Green"]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(320, 158)
+tile_set = ExtResource("9_qhi6b")
+format = 2
+script = ExtResource("10_v4fvr")
+_color = 1
+
+[node name="FinishVisual" type="Sprite2D" parent="Visuals/Green"]
+modulate = Color(0, 1, 0, 1)
+texture = ExtResource("11_80p5m")
+script = ExtResource("12_7opm6")
+_color = 1
+
+[node name="PlayerVisual" parent="Visuals/Green" instance=ExtResource("13_1vny7")]
+modulate = Color(0, 1, 0, 1)
+_color = 1
+
+[node name="Blue" type="SubViewport" parent="Visuals"]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(960, 540)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="CurrentColor" parent="UI" instance=ExtResource("15_aigxf")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="BlockerFuckYou" type="ColorRect" parent="UI"]
+offset_left = 52.0
+offset_top = 182.0
+offset_right = 102.0
+offset_bottom = 232.0
+color = Color(0.164706, 0.164706, 0.164706, 1)
+script = ExtResource("15_x03c6")
+
+[node name="Level" type="Label" parent="UI"]
+modulate = Color(1, 0, 0.501961, 1)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_top = -60.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_6dymp")
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Blend" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_bl5vr")
+offset_right = 960.0
+offset_bottom = 540.0
+script = ExtResource("15_bujtr")
+_shader = SubResource("ShaderMaterial_bl5vr")
+
+[node name="CRT" type="CanvasLayer" parent="."]
+
+[node name="CRT" type="TextureRect" parent="CRT"]
+material = SubResource("ShaderMaterial_8k5lo")
+offset_right = 960.0
+offset_bottom = 540.0
+texture = SubResource("PlaceholderTexture2D_akv17")
+metadata/_edit_use_anchors_ = true
+
+[node name="Bloom" type="TextureRect" parent="."]
+material = ExtResource("17_h7b5b")
+offset_right = 960.0
+offset_bottom = 540.0
+texture = SubResource("PlaceholderTexture2D_3nfky")
+metadata/_edit_use_anchors_ = true
+
+[node name="Pause" type="CanvasLayer" parent="."]
+
+[node name="CRT" type="TextureRect" parent="Pause"]
+material = SubResource("ShaderMaterial_fufq5")
+offset_right = 960.0
+offset_bottom = 540.0
+texture = SubResource("PlaceholderTexture2D_ilf0v")
+
+[node name="Bloom" type="TextureRect" parent="Pause"]
+material = ExtResource("17_h7b5b")
+offset_right = 960.0
+offset_bottom = 540.0
+texture = SubResource("PlaceholderTexture2D_ayhg6")
+
+[node name="PauseMenu" type="Control" parent="Pause"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_top = 540.0
+offset_right = 960.0
+offset_bottom = 1080.0
+mouse_filter = 2
+script = ExtResource("19_5v4xu")
+
+[node name="Background" type="ColorRect" parent="Pause/PauseMenu"]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 540.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.666667)
+
+[node name="Resume" type="TextureButton" parent="Pause/PauseMenu"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -90.0
+offset_right = 200.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("20_itbyk")
+script = ExtResource("21_6hrvy")
+_color = Color(0, 1, 0, 1)
+
+[node name="Menu" type="TextureButton" parent="Pause/PauseMenu"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 35.0
+offset_right = 200.0
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("22_ouute")
+script = ExtResource("21_6hrvy")
+_color = Color(1, 0, 0, 1)
+
+[connection signal="pressed" from="Pause/PauseMenu/Resume" to="Pause/PauseMenu/Resume" method="_OnResumePressed"]
+[connection signal="pressed" from="Pause/PauseMenu/Menu" to="Pause/PauseMenu/Menu" method="_OnMenuPressed"]

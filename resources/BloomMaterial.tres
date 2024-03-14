@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://7eqsakxy1pwg"]
+
+[ext_resource type="Shader" path="res://scripts/shaders/Bloom.gdshader" id="1_lfjrp"]
+
+[resource]
+shader = ExtResource("1_lfjrp")
+shader_parameter/blur_scale = 0.25
+shader_parameter/bloom_intensity = 0.4
+shader_parameter/bloom_threshold = 0.01
+shader_parameter/colour_amplification = Vector3(1, 1, 1)

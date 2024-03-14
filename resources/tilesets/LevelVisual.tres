@@ -1,0 +1,12 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://0vfqa15q06fa"]
+
+[ext_resource type="Texture2D" uid="uid://27768pxqgk1l" path="res://sprites/ingame/tilemap.png" id="1_wyxwt"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2hdat"]
+texture = ExtResource("1_wyxwt")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_2hdat")

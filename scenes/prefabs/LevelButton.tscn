@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://ba2y4nrv4qtbf"]
+
+[ext_resource type="FontFile" uid="uid://dxeu3wrfd8n4s" path="res://sprites/ui/ingame/numbers.png" id="1_atd4d"]
+[ext_resource type="Texture2D" uid="uid://bgew1g1tk3whe" path="res://sprites/ui/etc/border.png" id="2_4fvwb"]
+[ext_resource type="Script" path="res://scripts/ui/level select/LevelButton.cs" id="2_yg1bj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_avp1g"]
+font = ExtResource("1_atd4d")
+font_size = 28
+outline_color = Color(1, 1, 1, 0)
+shadow_size = 0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_85fri"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4xxki"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y85el"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f5qcb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wlh0l"]
+
+[node name="LevelButton" type="Label"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -896.0
+offset_bottom = -476.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_avp1g")
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 2
+visible_ratio = 2.0
+script = ExtResource("2_yg1bj")
+
+[node name="Border" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_4fvwb")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 63.0
+offset_bottom = 63.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_85fri")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4xxki")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_y85el")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_f5qcb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wlh0l")
+
+[connection signal="mouse_entered" from="Button" to="." method="_OnMouseEntered"]
+[connection signal="mouse_exited" from="Button" to="." method="_OnMouseExited"]

@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj1s75tl0kerq"]
+
+[ext_resource type="Script" path="res://scripts/ingame/ui/CurrentColorRect.cs" id="1_qgg8d"]
+
+[node name="CurrentColor" type="Control" node_paths=PackedStringArray("_border", "_green", "_blue")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -906.0
+offset_bottom = -356.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qgg8d")
+_border = NodePath("ColorBorder")
+_green = NodePath("Green")
+_blue = NodePath("Blue")
+
+[node name="ColorBorder" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 54.0
+offset_bottom = 54.0
+
+[node name="Red" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 52.0
+offset_bottom = 52.0
+color = Color(1, 0, 0, 1)
+
+[node name="Green" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 67.0
+offset_right = 52.0
+offset_bottom = 117.0
+color = Color(0, 1, 0, 1)
+
+[node name="Blue" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 132.0
+offset_right = 52.0
+offset_bottom = 182.0
+color = Color(0, 0, 1, 1)

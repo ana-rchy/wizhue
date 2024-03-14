@@ -1,0 +1,22 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://dxeu3wrfd8n4s"
+path="res://.godot/imported/numbers.png-1892d0cd19b5693d59ec6d6a8a2ae846.fontdata"
+
+[deps]
+
+source_file="res://sprites/ui/ingame/numbers.png"
+dest_files=["res://.godot/imported/numbers.png-1892d0cd19b5693d59ec6d6a8a2ae846.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("\'0\'-\'9\'")
+columns=10
+rows=1
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, -2, 0)
+fallbacks=[]
+compress=true
+scaling_mode=2

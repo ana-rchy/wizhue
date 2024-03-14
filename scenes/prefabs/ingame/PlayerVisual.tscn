@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b77u76sepqlie"]
+
+[ext_resource type="SpriteFrames" uid="uid://cqe5medar4pkq" path="res://resources/PlayerSpriteFrames.tres" id="1_e8mp4"]
+[ext_resource type="Script" path="res://scripts/ingame/player/PlayerVisual.cs" id="2_qap7d"]
+
+[node name="PlayerVisual" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_e8mp4")
+animation = &"Down"
+script = ExtResource("2_qap7d")
+_particleScene = "res://scenes/prefabs/ingame/MoveParticle.tscn"

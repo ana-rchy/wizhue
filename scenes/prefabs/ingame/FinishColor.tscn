@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl4p7ivsntfe"]
+
+[ext_resource type="Script" path="res://scripts/ingame/finish/FinishColor.cs" id="1_760hx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2s8de"]
+size = Vector2(32, 32)
+
+[node name="FinishColor" type="Area2D"]
+script = ExtResource("1_760hx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_2s8de")
+
+[node name="Raycasts" type="Node2D" parent="."]
+
+[node name="Left" type="RayCast2D" parent="Raycasts"]
+position = Vector2(16, 16)
+target_position = Vector2(-32, 0)
+
+[node name="Right" type="RayCast2D" parent="Raycasts"]
+position = Vector2(16, 16)
+target_position = Vector2(32, 0)
